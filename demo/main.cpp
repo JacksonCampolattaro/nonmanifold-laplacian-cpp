@@ -1,27 +1,27 @@
-#include "bubble_offset.h"
-#include "point_cloud_utilities.h"
-
-#include "geometrycentral/numerical/linear_algebra_utilities.h"
-#include "geometrycentral/surface/edge_length_geometry.h"
-#include "geometrycentral/surface/halfedge_factories.h"
-#include "geometrycentral/surface/intrinsic_mollification.h"
-#include "geometrycentral/surface/manifold_surface_mesh.h"
-#include "geometrycentral/surface/meshio.h"
-#include "geometrycentral/surface/signpost_intrinsic_triangulation.h"
-#include "geometrycentral/surface/simple_polygon_mesh.h"
-#include "geometrycentral/surface/surface_mesh.h"
-#include "geometrycentral/surface/tufted_laplacian.h"
-#include "geometrycentral/surface/vertex_position_geometry.h"
-
-#include "polyscope/curve_network.h"
-#include "polyscope/point_cloud.h"
-#include "polyscope/polyscope.h"
-#include "polyscope/surface_mesh.h"
-
-#include "args/args.hxx"
-#include "imgui.h"
-
 #include <sstream>
+
+#include <args.hxx>
+#include <imgui.h>
+
+#include <geometrycentral/numerical/linear_algebra_utilities.h>
+#include <geometrycentral/surface/edge_length_geometry.h>
+#include <geometrycentral/surface/halfedge_factories.h>
+#include <geometrycentral/surface/intrinsic_mollification.h>
+#include <geometrycentral/surface/manifold_surface_mesh.h>
+#include <geometrycentral/surface/meshio.h>
+#include <geometrycentral/surface/signpost_intrinsic_triangulation.h>
+#include <geometrycentral/surface/simple_polygon_mesh.h>
+#include <geometrycentral/surface/surface_mesh.h>
+#include <geometrycentral/surface/tufted_laplacian.h>
+#include <geometrycentral/surface/vertex_position_geometry.h>
+
+#include <polyscope/curve_network.h>
+#include <polyscope/point_cloud.h>
+#include <polyscope/polyscope.h>
+#include <polyscope/surface_mesh.h>
+
+#include <nonmanifoldlaplacian/bubble_offset.h>
+#include <nonmanifoldlaplacian/point_cloud_utilities.h>
 
 using namespace geometrycentral;
 using namespace geometrycentral::surface;

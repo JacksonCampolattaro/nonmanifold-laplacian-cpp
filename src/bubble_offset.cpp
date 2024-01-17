@@ -1,4 +1,4 @@
-#include "bubble_offset.h"
+#include "../include/nonmanifoldlaplacian/bubble_offset.h"
 
 
 BubbleOffset::BubbleOffset(EmbeddedGeometryInterface& geom_) : geom(geom_) {

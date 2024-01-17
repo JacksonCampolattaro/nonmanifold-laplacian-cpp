@@ -1,9 +1,9 @@
 #pragma once
 
-#include "geometrycentral/surface/manifold_surface_mesh.h"
-#include "geometrycentral/surface/simple_polygon_mesh.h"
-#include "geometrycentral/surface/surface_point.h"
-#include "geometrycentral/surface/vertex_position_geometry.h"
+#include <geometrycentral/surface/manifold_surface_mesh.h>
+#include <geometrycentral/surface/simple_polygon_mesh.h>
+#include <geometrycentral/surface/surface_point.h>
+#include <geometrycentral/surface/vertex_position_geometry.h>
 
 using namespace geometrycentral;
 using namespace geometrycentral::surface;

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "geometrycentral/utilities/vector2.h"
-#include "geometrycentral/utilities/vector3.h"
+#include <geometrycentral/utilities/vector2.h>
+#include <geometrycentral/utilities/vector3.h>
 
-#include "geometrycentral/numerical/linear_algebra_utilities.h"
+#include <geometrycentral/numerical/linear_algebra_utilities.h>
 
 using geometrycentral::SparseMatrix;
 using geometrycentral::Vector;

@@ -1,16 +1,16 @@
-#include "point_cloud_utilities.h"
-
-#include "geometrycentral/utilities/elementary_geometry.h"
-#include "geometrycentral/utilities/knn.h"
-
-#include "polyscope/point_cloud.h"
-#include "polyscope/polyscope.h"
-#include "polyscope/surface_mesh.h"
-
-#include "Eigen/Dense"
-
 #include <cfloat>
 #include <numeric>
+
+#include <geometrycentral/utilities/elementary_geometry.h>
+#include <geometrycentral/utilities/knn.h>
+
+#include <polyscope/point_cloud.h>
+#include <polyscope/polyscope.h>
+#include <polyscope/surface_mesh.h>
+
+#include <Eigen/Dense>
+
+#include "../include/nonmanifoldlaplacian/point_cloud_utilities.h"
 
 std::vector<std::vector<size_t>> generate_knn(const std::vector<Vector3>& points, size_t k) {
 
