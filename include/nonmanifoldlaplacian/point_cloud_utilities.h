@@ -23,7 +23,7 @@ std::vector<geometrycentral::Vector3> generate_normals(
 // The output is in correspondence with `neigh`, with the center point implicitly at (0,0)
 std::vector<std::vector<geometrycentral::Vector2>> generate_coords_projection(
     const std::vector<geometrycentral::Vector3>& points,
-    const std::vector<geometrycentral::Vector3> normals,
+    const std::vector<geometrycentral::Vector3>& normals,
     const Neighbors_t& neigh
 );
 

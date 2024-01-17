@@ -25,8 +25,6 @@ std::vector<std::vector<size_t>> generate_knn(const std::vector<Vector3>& points
 
 std::vector<Vector3> generate_normals(const std::vector<Vector3>& points, const Neighbors_t& neigh) {
 
-    using namespace Eigen;
-
     std::vector<Vector3> normals(points.size());
 
     for (size_t iPt = 0; iPt < points.size(); iPt++) {
@@ -40,7 +38,7 @@ std::vector<Vector3> generate_normals(const std::vector<Vector3>& points, const 
         center /= nNeigh + 1;
 
         // Assemble matrix os vectors from centroid
-        MatrixXd localMat(3, neigh[iPt].size());
+        Eigen::MatrixXd localMat(3, neigh[iPt].size());
         for (size_t iN = 0; iN < nNeigh; iN++) {
             Vector3 neighPos = points[neigh[iPt][iN]] - center;
             localMat(0, iN) = neighPos.x;
@@ -49,8 +47,8 @@ std::vector<Vector3> generate_normals(const std::vector<Vector3>& points, const 
         }
 
         // Smallest singular vector is best normal
-        JacobiSVD<MatrixXd> svd(localMat, ComputeThinU);
-        Vector3d bestNormal = svd.matrixU().col(2);
+        Eigen::JacobiSVD<Eigen::MatrixXd> svd(localMat, Eigen::ComputeThinU);
+        Eigen::Vector3d bestNormal = svd.matrixU().col(2);
 
         Vector3 N{bestNormal(0), bestNormal(1), bestNormal(2)};
         N = unit(N);
@@ -63,7 +61,7 @@ std::vector<Vector3> generate_normals(const std::vector<Vector3>& points, const 
 
 std::vector<std::vector<Vector2>> generate_coords_projection(
     const std::vector<Vector3>& points,
-    const std::vector<Vector3> normals,
+    const std::vector<Vector3>& normals,
     const Neighbors_t& neigh
 ) {
     std::vector<std::vector<Vector2>> coords(points.size());
@@ -75,10 +73,9 @@ std::vector<std::vector<Vector2>> generate_coords_projection(
         Vector3 normal = normals[iPt];
 
         // build an arbitrary tangent basis
-        Vector3 basisX, basisY;
         auto r = normal.buildTangentBasis();
-        basisX = r[0];
-        basisY = r[1];
+        Vector3 basisX = r[0];
+        Vector3 basisY = r[1];
 
         for (size_t iN = 0; iN < nNeigh; iN++) {
             Vector3 vec = points[neigh[iPt][iN]] - center;
@@ -135,8 +132,7 @@ LocalTriangulationResult build_delaunay_triangulations(
         }
 
         // Local copies of points
-        std::vector<Vector2> perturbPoints = coords[iPt];
-        std::vector<size_t> perturbInds = neigh[iPt]; {
+        std::vector<Vector2> perturbPoints = coords[iPt]; {
             // Perturb points which are extremely close to the source
             for (size_t iNeigh = 0; iNeigh < nNeigh; iNeigh++) {
                 Vector2& neighPt = perturbPoints[iNeigh];
