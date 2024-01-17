@@ -22,6 +22,7 @@ FetchContent_MakeAvailable(geometry-central)
 add_library(nonmanifold-laplacian STATIC
         src/bubble_offset.cpp
         src/point_cloud_utilities.cpp
+        src/robust_laplacian.cpp
 )
 target_include_directories(nonmanifold-laplacian PUBLIC SYSTEM include)
 target_link_libraries(nonmanifold-laplacian PRIVATE geometry-central)

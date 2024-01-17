@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(nonmanifold-laplacian-demo)
 
+include(FetchContent)
+
 # Dependencies
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -29,4 +31,10 @@ FetchContent_MakeAvailable(args)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 add_executable(tufted-idt main.cpp)
-target_link_libraries(tufted-idt PRIVATE geometry-central polyscope args nonmanifold-laplacian)
+target_link_libraries(
+        tufted-idt PRIVATE
+        geometry-central
+        polyscope
+        args
+        nonmanifold-laplacian
+)
