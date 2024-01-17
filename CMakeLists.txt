@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.10.0)
-
 project(nonmanifold-laplacian)
 
 
@@ -27,11 +26,11 @@ FetchContent_MakeAvailable(polyscope)
 # Library
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-add_library(nonmanifold-laplacian
+add_library(nonmanifold-laplacian STATIC
         src/bubble_offset.cpp
         src/point_cloud_utilities.cpp
 )
-target_include_directories(nonmanifold-laplacian PUBLIC include)
+target_include_directories(nonmanifold-laplacian PUBLIC SYSTEM include)
 target_link_libraries(nonmanifold-laplacian PRIVATE geometry-central polyscope)
 set_property(TARGET nonmanifold-laplacian PROPERTY CXX_STANDARD 20)
 
