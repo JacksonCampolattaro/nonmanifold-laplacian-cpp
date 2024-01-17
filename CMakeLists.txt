@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(nonmanifold-laplacian)
 
-option(NONMANIFOLD_LAPLACIAN_BUILD_DEMO "Build demo" ON)
+option(NONMANIFOLD_LAPLACIAN_BUILD_DEMO "Build demo" OFF)
 
 # Dependencies
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -12,7 +12,7 @@ include(FetchContent)
 FetchContent_Declare(
         geometry-central
         GIT_REPOSITORY https://github.com/nmwsharp/geometry-central.git
-        GIT_TAG 391d787
+        GIT_TAG v0.1.0
 )
 FetchContent_MakeAvailable(geometry-central)
 

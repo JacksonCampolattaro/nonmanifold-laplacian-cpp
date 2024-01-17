@@ -122,12 +122,12 @@ void generateVisualization() {
     // This is bit of an ugly hack.
     // This length factor works around amibiguity in sharedFace() below; there could be multiple
     // shared faces, but stopping early helps create a surface point in the one we want.
-    double oldLen = signpostTri->intrinsicEdgeLengths[e];
-    signpostTri->intrinsicEdgeLengths[e] *= .999;
+    double oldLen = signpostTri->edgeLengths[e];
+    signpostTri->edgeLengths[e] *= .999;
 
     std::vector<SurfacePoint> points = signpostTri->traceHalfedge(he, false);
 
-    signpostTri->intrinsicEdgeLengths[e] = oldLen; // restore the pre-adjusted length from above
+    signpostTri->edgeLengths[e] = oldLen; // restore the pre-adjusted length from above
 
     lines.emplace_back();
 
