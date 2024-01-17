@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(nonmanifold-laplacian)
 
+option(NONMANIFOLD_LAPLACIAN_BUILD_DEMO "Build demo" ON)
 
 # Dependencies
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -15,14 +16,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(geometry-central)
 
-# Polyscope
-FetchContent_Declare(
-        polyscope
-        GIT_REPOSITORY https://github.com/nmwsharp/polyscope.git
-        GIT_TAG 050538e
-)
-FetchContent_MakeAvailable(polyscope)
-
 # Library
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -31,10 +24,12 @@ add_library(nonmanifold-laplacian STATIC
         src/point_cloud_utilities.cpp
 )
 target_include_directories(nonmanifold-laplacian PUBLIC SYSTEM include)
-target_link_libraries(nonmanifold-laplacian PRIVATE geometry-central polyscope)
+target_link_libraries(nonmanifold-laplacian PRIVATE geometry-central)
 set_property(TARGET nonmanifold-laplacian PROPERTY CXX_STANDARD 20)
 
 # Demo
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-add_subdirectory(demo)
+if (NONMANIFOLD_LAPLACIAN_BUILD_DEMO)
+    add_subdirectory(demo)
+endif ()

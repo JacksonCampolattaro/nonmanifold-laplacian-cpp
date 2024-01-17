@@ -9,6 +9,14 @@ if (NOT TARGET nonmanifold-laplacian)
     find_package(nonmanifold-laplacian REQUIRED)
 endif ()
 
+# Polyscope
+FetchContent_Declare(
+        polyscope
+        GIT_REPOSITORY https://github.com/nmwsharp/polyscope.git
+        GIT_TAG 050538e
+)
+FetchContent_MakeAvailable(polyscope)
+
 # Args
 FetchContent_Declare(
         args

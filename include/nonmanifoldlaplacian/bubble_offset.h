@@ -5,28 +5,27 @@
 #include <geometrycentral/surface/surface_point.h>
 #include <geometrycentral/surface/vertex_position_geometry.h>
 
-using namespace geometrycentral;
-using namespace geometrycentral::surface;
-
 class BubbleOffset {
-
 public:
-  BubbleOffset(EmbeddedGeometryInterface& geom);
+    explicit BubbleOffset(geometrycentral::surface::EmbeddedGeometryInterface& geom);
 
-  // Parameters
-  double relativeScale = 0.01;
-  double dialate = 0.0;
-  double normalOffset = 0.0;
-  bool useEdgeScaling = true;
+    // Parameters
+    double relativeScale = 0.01;
+    double dialate = 0.0;
+    double normalOffset = 0.0;
+    bool useEdgeScaling = true;
 
-  // Methods
-  Vector3 queryPoint(const SurfacePoint& p);
+    // Methods
+    geometrycentral::Vector3 queryPoint(const geometrycentral::surface::SurfacePoint& p);
 
 
-  // Members
-  EmbeddedGeometryInterface& geom;
-  EdgeData<Vector3> edgeNormals;
+    // Members
+    geometrycentral::surface::EmbeddedGeometryInterface& geom;
+    geometrycentral::surface::EdgeData<geometrycentral::Vector3> edgeNormals;
 };
 
-std::unique_ptr<SimplePolygonMesh> subdivideRounded(ManifoldSurfaceMesh& mesh, VertexPositionGeometry& geom,
-                                                    int subdivLevel, double scale, double dialate, double normalOffset);
+std::unique_ptr<geometrycentral::surface::SimplePolygonMesh> subdivideRounded(
+    geometrycentral::surface::ManifoldSurfaceMesh& mesh,
+    geometrycentral::surface::VertexPositionGeometry& geom,
+    int subdivLevel, double scale, double dialate, double normalOffset
+);

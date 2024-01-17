@@ -8,7 +8,6 @@
 #include <geometrycentral/surface/halfedge_factories.h>
 #include <geometrycentral/surface/intrinsic_mollification.h>
 #include <geometrycentral/surface/manifold_surface_mesh.h>
-#include <geometrycentral/surface/meshio.h>
 #include <geometrycentral/surface/signpost_intrinsic_triangulation.h>
 #include <geometrycentral/surface/simple_polygon_mesh.h>
 #include <geometrycentral/surface/surface_mesh.h>
